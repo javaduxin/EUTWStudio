@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="${baseurl}/public/common/layui/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="${baseurl}/public/css/login.css" media="all">
 </head>
-
 <body>
 <div class="larry-canvas" id="canvas"></div>
 <div class="layui-layout layui-layout-login">
