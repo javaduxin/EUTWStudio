@@ -76,6 +76,7 @@ public class CommunicationReportServiceImpl implements CommunicationReportServic
     }
 
     private void createTeacherCommunicationType(Map<String, Object> tempCommunication, Map<String, Object> communication) {
+
         List<Integer> levels = DateUtil.getSearchLevels();
         List<Map<String, Object>> types = (List<Map<String, Object>>) tempCommunication.get("type");  //types = [{},{}...]
         if (types == null || types.size() == 0) {
@@ -85,7 +86,7 @@ public class CommunicationReportServiceImpl implements CommunicationReportServic
         } else {
             boolean flag = true;
             for (Map<String, Object> tempType : types) {
-                if (tempType.get("type").equals(communication.get("type"))) flag = false;
+                if (tempType!=null && tempType.get("type")!=null && tempType.get("type").equals(communication.get("type"))) flag = false;
             }
             if (flag) {
                 Map<String, Object> type = createType(communication, levels);
@@ -99,13 +100,24 @@ public class CommunicationReportServiceImpl implements CommunicationReportServic
 
     //该函数循环3*2159次
     private Map<String, Object> createType(Map<String, Object> communication, List<Integer> levels) {  //communication集合为改变‘.，levels = [2015,2016,2017]
+
+
+
         Map<String, Object> type = new HashMap<>();
-        type.put("type", communication.get("type"));  //{"type":"沟通类型名称","type":"沟通类型名称"...}
+        type.put("type", communication.get("TYPE"));  //{"type":"沟通类型名称","type":"沟通类型名称"...}
         List<Map<String, Integer>> level = new ArrayList<>();
+
         for (int i = 0; i < 3; ++i) {  //该方法for循环循环次数 21 * 3 * 2159  目前为止循环正常。//为其中的一种沟通类型添加三个年级属性，并把沟通次数初始值设置为零
+
             Map<String, Integer> temp = new HashMap<>();
             temp.put("level", levels.get(i));
-            temp.put("count", 0);
+            /*try {
+                temp.put("count", Integer.parseInt(communication.get("count").toString()));
+            }catch (Exception e){
+                temp.put("count", 0);
+            }*/
+            temp.put("count",Integer.parseInt(communication.get(levels.get(i)+"").toString()));
+            temp.put(levels.get(i)+"",Integer.parseInt(communication.get(levels.get(i)+"").toString()));
             level.add(temp);
         }//level = [{"level":2015,"count":0},{"level":2015,"count":0},{"level":2015,"count":0}]   三次循环level的结果
         type.put("levels", level); //type的结果{"type":"沟通类型名称","level":[{"level":2016,"count":0},{"level":2017,"count":0},{"level":2015,"count":0}],"type":"沟通类型名称"...}
@@ -120,7 +132,7 @@ public class CommunicationReportServiceImpl implements CommunicationReportServic
         //types = tempCommunication.get("type") 为[{"type":"沟通类型名称","level":[{"level":2015,"count":0},{"level":2016,"count":0},{"level":2017,"count":0}]...]
 
         for (Map<String, Object> type : types) {
-            if (type.get("type").equals(communication.get("type")) && teacher.equals(communication.get("teacher")))
+            if (communication!=null && teacher!=null && type!=null && type.get("type")!=null && type.get("type").equals(communication.get("type")) && teacher.equals(communication.get("teacher")))
                 addTypeLevelCount(type, (int) communication.get("level"));
         }
     }
@@ -142,7 +154,7 @@ public class CommunicationReportServiceImpl implements CommunicationReportServic
         if (types == null || types.size() == 0) return false;
 
         for (Map<String, Object> type : types) {
-            if (type.get("type").equals(communication.get("type"))) return true;
+            if (type!=null && type.get("type")!=null && type.get("type").equals(communication.get("type"))) return true;
         }
 
         return false;

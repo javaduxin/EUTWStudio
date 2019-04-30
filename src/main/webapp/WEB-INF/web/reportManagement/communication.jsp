@@ -49,6 +49,9 @@
 <script type="text/javascript" src="${baseurl}/js/searchJs.js"></script>
 <script type="text/javascript">
     let communication;
+    function xxx(){
+        alert(123);
+    }
     layui.use(['jquery', 'layer'], function () {
         window.jQuery = window.$ = layui.jquery;
         window.layer = layui.layer;
@@ -85,7 +88,9 @@
                         <th rowspan="` + types.length + `">` + teacher.teacher + `</th>
                         <th>` + types[0].type + `</th>
                         `;
-
+                    /*_html += `<th>` + levels[0][2018] + `</th>`;
+                    _html += `<th>` + levels[1][2017] + `</th>`;
+                    _html += `<th>` + levels[2][2016] + `</th>`;*/
                     for (let j = 0; j < levels.length; ++j) {
                         _html += `<th>` + levels[j].count + `</th>`;
 

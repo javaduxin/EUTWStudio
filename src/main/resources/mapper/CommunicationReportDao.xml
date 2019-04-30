@@ -4,14 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thoughtWorks.dao.CommunicationReportDao">
     <select id="queryCommunications" resultType="map">
-        SELECT teacher.name teacher,student.level,direction type,talk_name FROM t_communication communication
-        INNER JOIN (SELECT no,level FROM t_student) student on student.no = communication.student_id
-        INNER JOIN (SELECT no,name FROM t_teacher) teacher on teacher.no = communication.teacher_id
-        WHERE level in
+
+
+
+        SELECT
+        a.teacher,a.TYPE,MAX(IF(a.level='2016',a.count,0)) '2016',MAX(IF(a.level='2017',a.count,0)) '2017',MAX(IF(a.level='2018',a.count,0)) '2018'
+        FROM
+        (SELECT teacher.name teacher,student.level,direction TYPE,COUNT(1) `count` FROM t_communication communication
+        INNER JOIN t_student_v student ON student.no = communication.student_id
+        INNER JOIN t_teacher_v teacher ON teacher.no = communication.teacher_id
+        WHERE LEVEL IN
         <foreach collection="list" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
-        ORDER BY teacher_id DESC ,direction DESC ,level ASC
+        GROUP BY teacher,student.level,TYPE
+        ) a
+        GROUP BY teacher,TYPE
+        ORDER BY a.teacher DESC ,a.TYPE DESC
+
+
+        <!--SELECT teacher.name teacher,student.level,direction TYPE,talk_name FROM t_communication communication
+        INNER JOIN t_student_v student ON student.no = communication.student_id
+        INNER JOIN t_teacher_v teacher ON teacher.no = communication.teacher_id
+        WHERE LEVEL IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        ORDER BY teacher_id DESC ,direction DESC ,level ASC-->
     </select>
 
 </mapper>
