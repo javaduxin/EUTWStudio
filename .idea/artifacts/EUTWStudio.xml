@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="EUTWStudio">
-    <output-path>$PROJECT_DIR$/out/artifacts/EUTWStudio</output-path>
-    <root id="archive" name="EUTWStudio.war" />
-  </artifact>
-</component>
