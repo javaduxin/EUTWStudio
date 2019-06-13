@@ -19,7 +19,7 @@
             <input type="checkbox" value="学号" name="no" title="学号">
             <input type="checkbox" value="姓名" name="name" title="姓名">
             <input type="checkbox" value="性别" name="gender" title="性别">
-            <input type="checkbox" value="名族" name="famousFamily" title="名族">
+            <input type="checkbox" value="民族" name="famous_family" title="民族">
             <input type="checkbox" value="身份证号" name="idcard" title="身份证号">
             <input type="checkbox" value="出生日期" name="born" title="出生日期">
             <input type="checkbox" value="入学前文化程度" name="pre_school_education" title="入学前文化程度">
@@ -136,7 +136,7 @@
                 let no = $("input[name='no']:checked").val() + "--" + $("input[name='no']:checked").prop("name");
                 let name = $("input[name='name']:checked").val() + "--" + $("input[name='name']:checked").prop("name");
                 let gender = $("input[name='gender']:checked").val() + "--" + $("input[name='gender']:checked").prop("name");
-                let famousFamily = $("input[name='famousFamily']:checked").val() + "--" + $("input[name='famousFamily']:checked").prop("name");
+                let famousFamily = $("input[name='famous_family']:checked").val() + "--" + $("input[name='famous_family']:checked").prop("name");
                 let idcard = $("input[name='idcard']:checked").val() + "--" + $("input[name='idcard']:checked").prop("name");
                 let born = $("input[name='born']:checked").val() + "--" + $("input[name='born']:checked").prop("name");
                 let pre_school_education = $("input[name='pre_school_education']:checked").val() + "--" + $("input[name='pre_school_education']:checked").prop("name");
@@ -202,7 +202,7 @@
                     no: no,
                     name: name,
                     gender: gender,
-                    famousFamily: famousFamily,
+                    famous_family: famousFamily,
                     idcard: idcard,
                     born: born,
                     pre_school_education: pre_school_education,

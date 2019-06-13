@@ -30,7 +30,7 @@
                             <tr>
                                 <td>姓名: <span id="name"></span></td>
                                 <td>性别: <span id="gender"></span></td>
-                                <td>名族: <span id="famous_family"></span></td>
+                                <td>民族: <span id="famous_family"></span></td>
                                 <td>籍贯: <span id="address"></span></td>
                                 <td>学历: 专科</td>
                                 <td rowspan="3">

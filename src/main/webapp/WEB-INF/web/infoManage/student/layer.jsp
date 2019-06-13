@@ -772,7 +772,7 @@
                                             <div class="layui-input-inline" style="width: 100%">
                                                 <label class="layui-form-label" style="width: auto;margin-left: -15px">入学前户口所在派出所： </label>
                                                 <div class="layui-input-inline" style="width: 60%">
-                                                    <input type="text" name="idcard_address" placeholder="请输入入学前户口所在派出所"
+                                                    <input type="text" name="pre_school_account_where_station" placeholder="请输入入学前户口所在派出所"
                                                            autocomplete="off" class="layui-input"
                                                            id="school_account_where_the_police_station_detailed"
                                                            readonly style="border: none">

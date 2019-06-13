@@ -34,7 +34,7 @@
     {{# }); }}
 
 </script>
-<style  >
+<style>
     .layui-table td{
         font-size: 13px;
         padding: 5px 15px;
@@ -59,7 +59,7 @@
                         <tr style="padding: 0px;">
                             <td>姓名: <span id="name"></span></td>
                             <td>性别: <span id="gender"></span></td>
-                            <td>名族: <span id="famous_family"></span></td>
+                            <td>民族: <span id="famous_family"></span></td>
                             <td>政治面貌: <span id="political"></span></td>
                             <td>学号: <span id="no"></span></td>
                             <td rowspan="3">
